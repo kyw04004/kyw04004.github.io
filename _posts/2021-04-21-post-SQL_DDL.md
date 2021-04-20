@@ -1,5 +1,5 @@
 ---
-title: SQL DDL 명령어 2021-04-10-post-jwt.md
+title: SQL DDL 명령어
 categories:
 - SQL
 excerpt: "SQL DDL 요약입니다."
