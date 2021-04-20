@@ -1,5 +1,5 @@
 ---
-title: SQL DDL 명령어
+title: SQL DDL 명령어 2021-04-10-post-jwt.md
 categories:
 - SQL
 excerpt: "SQL DDL 요약입니다."
@@ -43,5 +43,12 @@ DDL 명령어
 	alter [unique] index 인덱스명 on 테이블명(컬럼명1, 컬럼명2, ...);
 	
 	drop index 인덱스명;
+	
+뷰 생성, 교체, 삭제
+	create view 뷰이름 as 조회쿼리;
+	
+	create or replace view 뷰이름 as 조회쿼리;
+	
+	drop view 뷰이름;
 	
 ```
