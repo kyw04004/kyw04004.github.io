@@ -1,5 +1,5 @@
 ---
-title: 유니온 파인드(Union-Find) && 크루스칼(Kruskal) 알고리즘
+title: 유니온 파인드 && 크루스칼 알고리즘
 categories:
 - Algorithm
 excerpt: "유니온파인드, 크루스칼 알고리즘 설명글입니다."

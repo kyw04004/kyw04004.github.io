@@ -1,5 +1,5 @@
 ---
-title: 기하 알고리즘(Convex Hull)
+title: 기하 알고리즘 - Convex Hull편
 categories:
 - Algorithm
 excerpt: "기하 알고리즘 Convex Hull 설명글입니다."

@@ -1,5 +1,5 @@
 ---
-title: 세그먼트 트리(Segment Tree) 알고리즘
+title: 세그먼트 트리 알고리즘
 categories:
 - Algorithm
 excerpt: "세그먼트 트리 알고리즘 설명글입니다."
