@@ -1,7 +1,7 @@
 ---
 title: 스택 2개로 큐 구현
 categories:
-- Coding Test
+- 
 excerpt: "스택 2개로 큐 구현한 소스코드입니다."
 feature_text: |
   ## 스택 2개로 큐 구현
