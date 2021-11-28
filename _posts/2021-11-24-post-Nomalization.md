@@ -1,7 +1,7 @@
 ---
 title: 데이터베이스 정규화
 categories:
-- SQL
+- Database
 excerpt: "데이터베이스 정규화에 대한 포스팅입니다. "
 feature_text: |
   ## 데이터베이스 정규화
