@@ -1,5 +1,5 @@
 ---
-title: 스프링에서 테스트 코드 작성하기 - BDDMockito
+title: 스프링에서 테스트 코드 작성하기
 categories:
 - Spring
 excerpt: "BDDMockito에 대한 포스팅입니다."
@@ -28,24 +28,29 @@ image: "https://picsum.photos/2560/600?image=733"
 
 ### 사용법
 - class 위에 @ExtendWith(MockitoExtension.class) 애노테이션 사용
+
 - @Mock 애노테이션을 사용해서 Mock 객체를 만들어줌.
-- Given : 메서드의 예상값을 지정해둔다. Stub.
-	+ given사용. ex) given(메서드).willReturn(예상값);
-- When : 예상값을 사용해본다.
-- Then : 예상한 결과가 맞게 나오는지 확인한다.
-	+ Assertions.assertThat 사용.
-	+ then 사용.
+
+- Given : 메서드의 예상값을 지정해둔다. Stub이라고 부름.
+	+ given 메서드 사용. ex) given(메서드).willReturn(예상값);
+	
+- When : 예상한 메서드를 사용해본다.
+
+- Then : 예상한 대로 메서드가 사용되는지 확인한다.
+	+ assertj 라이브러리와 then 메서드 사용
 
 <br>
 
 ### 사용 예시
 ```java
 @ExtendWith(MockitoExtension.class)
-public class UserServiceTest {
+public class Test {
 
     //Mock 객체 만들기
     @Mock UserService userService;
+    @Mock PlanStateService planStateService;
 
+	//일반 테스트
     @DisplayName("회원정보 조회")
     @Test
     void getUser() {
@@ -73,12 +78,46 @@ public class UserServiceTest {
         then(userService).should(times(1)).getUser(1L);
         
     }
+    
+    //예외 테스트
+    @DisplayName("약속 현황 생성 실패")
+    @Test
+    void setPlanStateFail() throws IllegalAccessException{
+    
+        //given
+        
+        //값 세팅
+        PlanStateDto planStateDto = new PlanStateDto(1L, 1L, 1L, null, null, null);
+        
+        //예상 예외 지정
+        willThrow(new IllegalAccessException()).given(planStateService).setPlanState(planStateDto);
+
+
+        //when
+        
+        try {
+        	//예상한 메서드 사용하기.
+            planStateService.setPlanState(planStateDto);
+        } catch (IllegalAccessException e) {
+        	//예외가 정상 작동시 리턴.
+            return;
+        }
+
+
+        //then
+        
+        //예외 발생이 안될 시 테스트 실패
+        Assertions.fail("약속 현황 중복으로 예외가 발생해야 한다.");
+    }
+}
 ```
 
 <br>
+
+
+
 
 ### 레퍼런스
 
 [https://velog.io/@lxxjn0/Mockito%EC%99%80-BDDMockito%EB%8A%94-%EB%AD%90%EA%B0%80-%EB%8B%A4%EB%A5%BC%EA%B9%8C](https://velog.io/@lxxjn0/Mockito%EC%99%80-BDDMockito%EB%8A%94-%EB%AD%90%EA%B0%80-%EB%8B%A4%EB%A5%BC%EA%B9%8C)
 [https://beststar-1.tistory.com/31](https://beststar-1.tistory.com/31)
-
