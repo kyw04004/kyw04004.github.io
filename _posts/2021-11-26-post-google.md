@@ -1,10 +1,10 @@
 ---
-title: 'www.google.com'을 치면 일어나는 일
+title: 브라우저에 'www.google.com'을 치면?
 categories:
 - Network
 excerpt: "웹의 동작방식에 대한 포스팅입니다."
 feature_text: |
-  ## 'www.google.com'을 치면 일어나는 일
+  ## 브라우저에 'www.google.com'을 치면?
   Network
 feature_image: "https://picsum.photos/2560/600?image=733"
 image: "https://picsum.photos/2560/600?image=733"
