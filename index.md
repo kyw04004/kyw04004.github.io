@@ -11,8 +11,8 @@ Github : [kyw04004](https://github.com/kyw04004) <br>
 GithubBlog : [kyw04004.github.io](https://kyw04004.github.io/)<br>
 BOJ : kws04004<br>
 <br>
-알고리즘과 개발을 공부하고 있는 예비 개발자입니다.<br>
-현재는 Spring과 JPA, CS 지식을 학습하고 있습니다. 
+알고리즘과 개발을 공부하고 있는 개발자입니다.<br>
+현재는 Spring과 JPA을 학습하고 있습니다. 
 
 <br>
 
@@ -41,7 +41,7 @@ BOJ : kws04004<br>
 
 <br>
 
-+ 삼성 SDS 알고리즘 특강  (2022.01)
++ 삼성 SDS 알고리즘 특강  (2022.01.03 ~ 2022.01.14, 80시간)
 + 교내 알고리즘 소모임 - ALCUK (2019.07 ~ 2021.06)
  
 <br>
@@ -50,6 +50,7 @@ BOJ : kws04004<br>
 
 <br>
 
++ 삼성 SDS SW Professional 등급 (2022.02)
 + 가톨릭대학교 컴퓨터정보공학부 학사 (2022.02)
 + 정보처리기사 (2021.06)
 + Opic IL (2021.02)
