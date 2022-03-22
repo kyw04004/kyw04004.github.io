@@ -55,12 +55,33 @@ image: "https://picsum.photos/2560/600?image=733"
 - 둘 이상의 컬렉션은 페치 조인할 수 없다.
 - 컬렉션을 페치 조인하면 페이징 API를 사용할 수 없다.
 	+ 일대일, 다대일 같은 단일 값 연관 필드들은 페치 조인해도 페이징 가능
-	+ 하이버네이트는 경고 로그를 남기고 메모리에서 페이징(매우 위험)
+	+ 컬렉션을 페치 조인하면 일대다 조인이 발생하므로 데이터가 예측할 수 없이 증가
+	+ 일대다에서 일을 기준으로 페이징을 하는 것이 목적이지만, 다를 기준으로 row가 생성
+	+ 하이버네이트는 경고 로그를 남기고 모든 DB 데이터를 읽어서 메모리에서 페이징 시도(매우 위험)
 - 연관된 엔티티들을 SQL 한 번으로 조회 - 성능 최적화
 - 엔티티에 직접 적용하는 글로벌 로딩 전략보다 우선함
 	+ @OneToMany(fetch=FetchType.LAZY) //글로벌 로딩 전략
 - 실무에서 글로벌 로딩 전략은 모두 지연 로딩
 - 최적화가 필요한 곳은 페치 조인 적용
+
+<br>
+
+### 한계 돌파
+- 페이징 + 컬렉션 엔티티를 함께 조회하려면?
+- 대부분의 페이징 + 컬렉션 엔티티 조회 문제를 해결하는 강력한 방법
+- ToOne 관계를 모두 페치조인
+	+ ToOne 관계는 row수를 증가시키지 않으므로 페이징 쿼리에 영향X
+- 컬렉션은 지연 로딩으로 조회
+- 지연 로딩 성능 최적화를 위해 hibernate.default_batch_size, @BatchSize를 적용
+	+ hibernate.default_batch_fetch_size: 글로벌 설정
+	+ @BatchSize: 개별 최적화
+	+ 이 옵션을 사용하면 컬렉션이나, 프록시 객체를 한꺼번에 설정한 size 만큼 IN 쿼리로 조회
+- default_batch_fetch_size의 크기는 100~1000 사이를 선택하는 것을 권장
+- 장점
+	+ 쿼리 호출 수가 N + 1 -> 1 + 1로 최적화
+	+ 조인보다 DB 데이터 전송량 최적화 (중복 데이터가 없음)
+	+ 페치 조인 방식보다 쿼리 호출 수가 약간 증가하지만 DB 데이터 전송량 감소
+	+ 컬렉션 페치 조인은 페이징 불가능하지만, 이 방법은 페이징 가능
 
 <br>
 
@@ -73,4 +94,5 @@ image: "https://picsum.photos/2560/600?image=733"
 
 ### 출처
 
-[자바 ORM 표준 JPA 프로그래밍 - 기본편 by 김영한](https://www.inflearn.com/course/ORM-JPA-Basic/dashboard)
+[자바 ORM 표준 JPA 프로그래밍 - 기본편 by 김영한](https://www.inflearn.com/course/ORM-JPA-Basic/dashboard) <br>
+[실전! 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화 by 김영한](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-API%EA%B0%9C%EB%B0%9C-%EC%84%B1%EB%8A%A5%EC%B5%9C%EC%A0%81%ED%99%94/dashboard)
