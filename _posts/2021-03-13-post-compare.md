@@ -27,7 +27,9 @@ bool operator 함수 안에는 기존에 bool compare 만들었던 것처럼 하
 
 기존에 less나 greater을 사용했던 자리에 compare을 적어주시면 사용가능합니다.  
 
-참고로 밑에 코드는 a, b, c 중에서 c, b, a순의 우선순위로 내림차순으로 정렬하는 코드입니다.  
+밑에 코드는 a, b, c 중에서 c, b, a순의 우선순위로 내림차순으로 정렬하는 코드입니다.  
+
+배열이나 벡터에서 compare 함수를 정의할 때와 반대로 동작합니다.
 
 
 
@@ -39,7 +41,7 @@ struct element {
 };
 struct compare {
 	bool operator() (element A, element B) {
-		if (A.c != B.c) return A.c < B.c;
+		if (A.a != B.a) return A.a < B.a;
 		else if (A.b != B.b) return A.b < B.b;
 		else if (A.c != B.c) return A.c < B.c;
 	}
