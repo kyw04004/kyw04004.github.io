@@ -1,7 +1,7 @@
 ---
 title: 객체지향의 사실과 오해
 categories:
-- Books
+- Etc
 excerpt: "객체지향의 사실과 오해의 후기입니다."
 feature_text: |
   ## The Essence of Object-Orientation

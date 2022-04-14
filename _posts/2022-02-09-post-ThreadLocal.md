@@ -25,7 +25,9 @@ image: "https://picsum.photos/2560/600?image=733"
 - 각 쓰레드마다 별도의 내부 저장소 제공.
 - 같은 인스턴스의 쓰레드 로컬 필드에 접근해도 문제 없음.
 - 자바는 언어차원에서 쓰레드 로컬을 지원하기 위한 <br> java.lang.ThreadLocal 클래스 제공
-- <그림 자료> <br>
+
+<br>
+
 ![image](https://user-images.githubusercontent.com/56823099/153154921-29355974-df3c-44ed-944d-78877c0e2e73.png)
 
 <br>

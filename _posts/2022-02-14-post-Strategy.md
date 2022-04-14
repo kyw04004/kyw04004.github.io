@@ -25,19 +25,19 @@ image: "https://picsum.photos/2560/600?image=733"
 	+ 스프링 애플리케이션 개발할 때 애플리케이션 로딩 시점에 의존관계 주입을 통해 <br> 필요한 의존관계를 모두 맺어두고 난 다음에 실제 요청을 처리하는 것과 같은 원리
 	+ 조립한 이후에 전략을 변경하기 번거롭다.
 	+ 실행 순서
-		- 1. Context에 원하는 Strategy 구현체를 주입
-		- 2. 클라이언트는 context 실행
-		- 3. context는 context 로직 시작
-		- 4. context 로직 중간에 주입 받은 strategy 로직 실행
-		- 5. context는 나머지 로직 실행
+        - (1) Context에 원하는 Strategy 구현체를 주입
+        - (2) 클라이언트는 context 실행
+        - (3) context는 context 로직 시작
+        - (4) context 로직 중간에 주입 받은 strategy 로직 실행
+        - (5) context는 나머지 로직 실행
 - 전략을 파라미터로 전달하는 방식
 	+ 실행할 때마다 전략을 유연하게 변경 가능
 	+ 실행할 때마다 전략을 계속 지정해주어야 하는 단점
 	+ 실행 순서
-		- 1. 클라이언트는 Context를 실행하면서 인수로 Strategy를 전달
-		- 2. Context는 context 로직 시작
-		- 3. Context는 파라미터로 넘어온 strategy 로직 실행
-		- 4. context는 나머지 로직 실행
+        - (1) 클라이언트는 Context를 실행하면서 인수로 Strategy를 전달
+        - (2) Context는 context 로직 시작
+        - (3) Context는 파라미터로 넘어온 strategy 로직 실행
+        - (4) context는 나머지 로직 실행
 	+ 이 방법을 스프링에서는 템플릿 콜백 패턴이라고 함.
 	+ Context가 템플릿 역할, Strategy 부분이 콜백 역할
 	+ 스프링에서 XxxTemplate가 있다면 템플릿 콜백 패턴으로 만들어짐.
@@ -46,13 +46,15 @@ image: "https://picsum.photos/2560/600?image=733"
 <br>
 
 ### 사용 예시
-- 블로그 특성상 골뱅이는 //로 대체했습니다.
 - 익명 내부 클래스를 자바8부터 제공하는 람다로 변경 가능
-	+ 람다로 변경하려면 인터페이스에 메서드가 1개만 있으면 됨.
+    + 람다로 변경하려면 인터페이스에 메서드가 1개만 있으면 됨.
+
+<br>
+
 ```java
 
 //필드에 전략을 보관하는 형식
-//Slf4j
+@Slf4j
 public class ContextV1 {
     private Strategy strategy;
 
@@ -72,7 +74,7 @@ public class ContextV1 {
 }
 
 //전략을 파라미터로 전달 받는 방식
-//Slf4j
+@Slf4j
 public class ContextV2 {
 
     public void execute(Strategy strategy) {
@@ -90,29 +92,29 @@ public interface Strategy {
     void call();
 }
 
-//Slf4j
+@Slf4j
 public class StrategyLogic1 implements Strategy{
-    //Override
+    @Override
     public void call() {
         log.info("비즈니스 로직1 실행");
     }
 }
 
-//Slf4j
+@Slf4j
 public class StrategyLogic2 implements Strategy{
-    //Override
+    @Override
     public void call() {
         log.info("비즈니스 로직2 실행");
     }
 }
 
 //필드에 전략을 보관하는 방식
-//Slf4j
+@Slf4j
 public class ContextV1Test {
     /**
      * 전략 패턴 사용
      */
-    //Test
+    @Test
     void strategyV1() {
         StrategyLogic1 strategyLogic1 = new StrategyLogic1();
         ContextV1 context1 = new ContextV1(strategyLogic1);
@@ -123,17 +125,17 @@ public class ContextV1Test {
     }
     
     //익명 내부 클래스 사용
-    //Test
+    @Test
     void strategyV2() {
         ContextV1 context1 = new ContextV1(new Strategy() {
-            //Override
+            @Override
             public void call() {
                 log.info("비즈니스 로직1 실행");
             }
         });
         context1.execute();
         ContextV1 context2 = new ContextV1(new Strategy() {
-            //Override
+            @Override
             public void call() {
                 log.info("비즈니스 로직2 실행");
             }
@@ -142,7 +144,7 @@ public class ContextV1Test {
     }
 
 	//람다 사용
-    //Test
+    @Test
     void strategyV4() {
         ContextV1 context1 = new ContextV1(() -> log.info("비즈니스 로직1 실행"));
         context1.execute();
@@ -152,13 +154,13 @@ public class ContextV1Test {
 }
 
 //전략을 파라미터로 전달하는 방식
-//Slf4j
+@Slf4j
 public class ContextV2Test {
 
     /**
      * 전략 패턴 적용
      */
-    //Test
+    @Test
     void strategyV1() {
         ContextV2 context = new ContextV2();
         context.execute(new StrategyLogic1());
@@ -166,17 +168,17 @@ public class ContextV2Test {
     }
 
     //전략 패턴 익명 내부 클래스
-    //Test
+    @Test
     void strategyV2() {
         ContextV2 context = new ContextV2();
         context.execute(new Strategy() {
-            //Override
+            @Override
             public void call() {
                 log.info("비즈니스 로직1 실행");
             }
         });
         context.execute(new Strategy() {
-            //Override
+            @Override
             public void call() {
                 log.info("비즈니스 로직2 실행");
             }
@@ -184,7 +186,7 @@ public class ContextV2Test {
     }
 
     //전략 패턴 익명 내부 클래스2, 람다
-    //Test
+    @Test
     void strategyV3() {
         ContextV2 context = new ContextV2();
         context.execute(() -> log.info("비즈니스 로직1 실행"));

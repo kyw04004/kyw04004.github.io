@@ -51,6 +51,9 @@ image: "https://picsum.photos/2560/600?image=733"
 
 ### 사용 예시
 - 코드가 너무 길어지는 것을 방지하기 위해 클라이언트 코드만 사용
+
+<br>
+
 ```java
 
 public class ProxyPatternTest {
