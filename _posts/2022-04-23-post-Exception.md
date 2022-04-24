@@ -2,7 +2,7 @@
 title: 자바 예외 (Exception)
 categories:
 - JAVA
-excerpt: "데이터베이스 트랜잭션에 대한 포스팅입니다. "
+excerpt: "자바 에 대한 포스팅입니다. "
 feature_text: |
   ## Exception
   자바 예외
