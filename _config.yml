@@ -85,7 +85,7 @@ lang: en-GB # Set the site language
 title: "컴공의 개발블로그" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
 description: "Welcome to the My Dev Blog" # Site description and default description, also used in jekyll-seo-tag
-url: "https://alembic.darn.es" # Site url, also used in jekyll-seo-tag
+url: "https://kyw04004.github.io/" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/daviddarnes/alembic"
 email: "me@daviddarnes.com"
