@@ -1,7 +1,7 @@
 ---
 title: 2022년 상반기 회고
 categories:
-- retrospect
+- Etc
 excerpt: "2022년 상반기 회고입니다. "
 feature_text: |
   ## 2022년 상반기 회고
