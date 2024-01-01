@@ -14,33 +14,32 @@ image: "https://picsum.photos/2560/600?image=733"
 - 모든 자바 프로그램은 JVM을 통해서 실행
 - JVM의 런타임 데이터 영역은 크게 5가지로 분류
 	+ 런타임 데이터 영역은 JVM의 메모리 영역으로 자바 애플리케이션을 <br> 실행할 때 사용되는 데이터들을 적재하는 영역
-
+	+ 간단한 예시
+![image](https://github.com/kyw04004/kyw04004.github.io/assets/56823099/b30c0696-547f-43bc-9a31-9b0e2dd2e8f4)
 <br>
 
-#### Method (Static) Area 
-- 클래스에 대한 정보와 클래스 변수(static variable)가 저장되는 영역
-- 모든 스레드가 공유하는 영역
+#### Method Area (메서드 영역)
+- 프로그램을 실행하는데 필요한 공통 데이터 관리
+	+ 클래스에 대한 정보와 클래스 변수(static variable) 그리고 상수 풀이 저장되는 영역
+	+ 모든 스레드가 공유하는 영역 (프로그램 모든 영역에서 공유)
 - 어디서든 접근 가능
 - JVM이 종료될 때까지 유지
 
 <br>
 
-#### Heap Area
-- 모든 인스턴스 변수가 저장되는 영역
-- 참조형 변수도 저장
-- new 키워드를 사용하여 생성된 인스턴스의 정보를 저장
+#### Heap Area (힙 영역)
+- 객체(인스턴스)와 배열이 생성되는 영역 (모든 인스턴스 변수가 저장되는 영역)
+- 가비지 컬렉션(GC)이 이루어지는 주요 영역, 더 이상 참조되지 않는 객체는 GC에 의해 제거
 - 모든 스레드가 공유하는 영역
-- GC가 정리전까지 남아있음
 
 <br>
 
-#### Stack Area
+#### Stack Area (스택 영역)
 - 메소드가 호출될 때 메소드의 스택 프레임이 저장되는 영역
 	+ 스택 프레임이란 스택 영역에 저장되는 메소드의 호출 정보
-- 메소드 호출과 관계되는 지역 변수와 매개변수를 스택 영역에 저장
-- 기본형 변수 저장
-- 스레드 별로 1개만 생성
+- 메소드 호출과 관계되는 지역 변수와 매개변수 등을 스택 영역에 저장
 - 메소드의 호출과 함께 할당되며, 메소드의 호출이 완료되면 소멸
+- 스레드 별로 1개만 생성/사용
 
 <br>
 
@@ -58,4 +57,5 @@ image: "https://picsum.photos/2560/600?image=733"
 ### 출처
 [TCPSchool](http://www.tcpschool.com/java/java_array_memory) <br>
 [https://tape22.tistory.com/28](https://tape22.tistory.com/28) <br>
-[https://steady-coding.tistory.com/305](https://steady-coding.tistory.com/305)
+[https://steady-coding.tistory.com/305](https://steady-coding.tistory.com/305) <br>
+[김영한의 실전 자바 - 기본편](https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EA%B8%B0%EB%B3%B8%ED%8E%B8/dashboard)
